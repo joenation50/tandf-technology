@@ -1,10 +1,11 @@
-@import "tailwindcss";
-
 /* Extract the custom styles into here */
 @import "./custom.css";
 
-/* Additional tailwind overrides if needed */
+/* Base body styling */
 body {
   background-color: var(--charcoal);
   color: var(--offwhite);
+  margin: 0;
+  padding: 0;
+  font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
 }
