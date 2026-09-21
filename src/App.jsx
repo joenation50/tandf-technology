@@ -6,7 +6,7 @@ import Admin from './pages/Admin';
 import Login from './pages/Login';
 import { handleGoogleRedirect } from './lib/googleAuth';
 
-handleGoogleRedirect();
+// handleGoogleRedirect();   // <-- temporarily disabled to test for crash
 
 function App() {
   return (
