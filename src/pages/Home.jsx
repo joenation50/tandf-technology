@@ -4,7 +4,6 @@ export default function Home() {
   const [formState, setFormState] = useState({ name: '', email: '', company: '', service: 'ict', message: '' });
   const [status, setStatus] = useState({ submitting: false, success: false, error: null });
 
-  /*
   useEffect(() => {
     const header = document.getElementById('siteHeader');
     let lastScroll = 0;
@@ -18,18 +17,14 @@ export default function Home() {
       lastScroll = currentScroll;
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  */
-
-  const handleSubmit = async (e) => {
-    ...
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ submitting: true, success: false, error: null });
-    
+
     try {
       const res = await fetch('/api/consultations', {
         method: 'POST',
@@ -49,8 +44,6 @@ export default function Home() {
 
   return (
     <>
-      
-
 {/* ================= HEADER ================= */}
 <header className="site-header" id="siteHeader">
   <div className="header-inner">
@@ -118,12 +111,9 @@ export default function Home() {
 {/* ================= HERO ================= */}
 <section className="hero noise" aria-label="Introduction">
   <div className="hero-media" id="heroMedia">
-    {/* REPLACE with client photography: data centre aisle / rooftop solar array at dusk */}
     <img
       src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80&auto=format&fit=crop"
-      srcset="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=960&q=78&auto=format&fit=crop 960w,
-              https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&q=80&auto=format&fit=crop 1600w,
-              https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=2200&q=80&auto=format&fit=crop 2200w"
+      srcSet="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=960&q=78&auto=format&fit=crop 960w, https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&q=80&auto=format&fit=crop 1600w, https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=2200&q=80&auto=format&fit=crop 2200w"
       sizes="100vw"
       alt="Illuminated server aisle inside a modern data centre" fetchpriority="high" decoding="async" />
   </div>
@@ -242,11 +232,9 @@ export default function Home() {
       <div className="teal-block" aria-hidden="true"></div>
       <div className="amber-block" aria-hidden="true"></div>
       <div className="frame">
-        {/* REPLACE with client photography: technician working on a distribution board */}
         <img
           src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1000&q=80&auto=format&fit=crop"
-          srcset="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=700&q=78&auto=format&fit=crop 700w,
-                  https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&q=80&auto=format&fit=crop 1200w"
+          srcSet="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=700&q=78&auto=format&fit=crop 700w, https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&q=80&auto=format&fit=crop 1200w"
           sizes="(max-width:1023px) 100vw, 42vw"
           alt="Engineer inspecting electrical control equipment on site" loading="lazy" decoding="async" />
       </div>
@@ -276,13 +264,10 @@ export default function Home() {
     </div>
 
     <div className="services-grid">
-      {/* Card 1 */}
       <article className="svc-card" data-reveal>
         <div className="svc-img">
-          {/* REPLACE with client photography: server rack / patch panel */}
           <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80&auto=format&fit=crop"
-               srcset="https://images.unsplash.com/photo-1518770660439-4636190af475?w=520&q=78&auto=format&fit=crop 520w,
-                       https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=80&auto=format&fit=crop 900w"
+               srcSet="https://images.unsplash.com/photo-1518770660439-4636190af475?w=520&q=78&auto=format&fit=crop 520w, https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&q=80&auto=format&fit=crop 900w"
                sizes="(max-width:479px) 92vw,(max-width:1023px) 46vw,23vw"
                alt="Network hardware and structured cabling detail" loading="lazy" decoding="async" />
           <div className="svc-num">01</div>
@@ -298,13 +283,10 @@ export default function Home() {
         </div>
       </article>
 
-      {/* Card 2 */}
       <article className="svc-card" data-reveal>
         <div className="svc-img">
-          {/* REPLACE with client photography: switchgear / industrial wiring */}
           <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80&auto=format&fit=crop"
-               srcset="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=520&q=78&auto=format&fit=crop 520w,
-                       https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=900&q=80&auto=format&fit=crop 900w"
+               srcSet="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=520&q=78&auto=format&fit=crop 520w, https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=900&q=80&auto=format&fit=crop 900w"
                sizes="(max-width:479px) 92vw,(max-width:1023px) 46vw,23vw"
                alt="Industrial electrical installation work" loading="lazy" decoding="async" />
           <div className="svc-num">02</div>
@@ -320,13 +302,10 @@ export default function Home() {
         </div>
       </article>
 
-      {/* Card 3 */}
       <article className="svc-card" data-reveal>
         <div className="svc-img">
-          {/* REPLACE with client photography: rooftop solar array, golden hour */}
           <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80&auto=format&fit=crop"
-               srcset="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=520&q=78&auto=format&fit=crop 520w,
-                       https://images.unsplash.com/photo-1509391366360-2e959784a276?w=900&q=80&auto=format&fit=crop 900w"
+               srcSet="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=520&q=78&auto=format&fit=crop 520w, https://images.unsplash.com/photo-1509391366360-2e959784a276?w=900&q=80&auto=format&fit=crop 900w"
                sizes="(max-width:479px) 92vw,(max-width:1023px) 46vw,23vw"
                alt="Solar photovoltaic panels at golden hour" loading="lazy" decoding="async" />
           <div className="svc-num">03</div>
@@ -342,13 +321,10 @@ export default function Home() {
         </div>
       </article>
 
-      {/* Card 4 */}
       <article className="svc-card" data-reveal>
         <div className="svc-img">
-          {/* REPLACE with client photography: engineer with tablet on site */}
           <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80&auto=format&fit=crop"
-               srcset="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=520&q=78&auto=format&fit=crop 520w,
-                       https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=900&q=80&auto=format&fit=crop 900w"
+               srcSet="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=520&q=78&auto=format&fit=crop 520w, https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=900&q=80&auto=format&fit=crop 900w"
                sizes="(max-width:479px) 92vw,(max-width:1023px) 46vw,23vw"
                alt="Engineer reviewing technical plans on site" loading="lazy" decoding="async" />
           <div className="svc-num">04</div>
@@ -489,10 +465,8 @@ export default function Home() {
     <div className="projects-track" id="projectsTrack">
       <article className="proj-card" data-reveal>
         <div className="proj-img">
-          {/* REPLACE with client photography: hospital solar / inverter installation */}
           <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=900&q=80&auto=format&fit=crop"
-               srcset="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&q=78&auto=format&fit=crop 600w,
-                       https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1000&q=80&auto=format&fit=crop 1000w"
+               srcSet="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&q=78&auto=format&fit=crop 600w, https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1000&q=80&auto=format&fit=crop 1000w"
                sizes="(max-width:767px) 82vw, 31vw"
                alt="Solar panel installation on a facility rooftop" loading="lazy" decoding="async" />
           <div className="proj-tag">Healthcare</div>
@@ -513,10 +487,8 @@ export default function Home() {
 
       <article className="proj-card" data-reveal>
         <div className="proj-img">
-          {/* REPLACE with client photography: data centre / network room */}
           <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&q=80&auto=format&fit=crop"
-               srcset="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=78&auto=format&fit=crop 600w,
-                       https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1000&q=80&auto=format&fit=crop 1000w"
+               srcSet="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=78&auto=format&fit=crop 600w, https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1000&q=80&auto=format&fit=crop 1000w"
                sizes="(max-width:767px) 82vw, 31vw"
                alt="Data centre server racks" loading="lazy" decoding="async" />
           <div className="proj-tag">Financial Services</div>
@@ -537,10 +509,8 @@ export default function Home() {
 
       <article className="proj-card" data-reveal>
         <div className="proj-img">
-          {/* REPLACE with client photography: industrial switchgear / factory */}
           <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&q=80&auto=format&fit=crop"
-               srcset="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=78&auto=format&fit=crop 600w,
-                       https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1000&q=80&auto=format&fit=crop 1000w"
+               srcSet="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=78&auto=format&fit=crop 600w, https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1000&q=80&auto=format&fit=crop 1000w"
                sizes="(max-width:767px) 82vw, 31vw"
                alt="Engineer working in an industrial facility" loading="lazy" decoding="async" />
           <div className="proj-tag">Industrial</div>
@@ -561,10 +531,8 @@ export default function Home() {
 
       <article className="proj-card" data-reveal>
         <div className="proj-img">
-          {/* REPLACE with client photography: campus / institutional building */}
           <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=900&q=80&auto=format&fit=crop"
-               srcset="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=600&q=78&auto=format&fit=crop 600w,
-                       https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1000&q=80&auto=format&fit=crop 1000w"
+               srcSet="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=600&q=78&auto=format&fit=crop 600w, https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1000&q=80&auto=format&fit=crop 1000w"
                sizes="(max-width:767px) 82vw, 31vw"
                alt="Modern institutional workspace interior" loading="lazy" decoding="async" />
           <div className="proj-tag">Education</div>
@@ -585,10 +553,8 @@ export default function Home() {
 
       <article className="proj-card" data-reveal>
         <div className="proj-img">
-          {/* REPLACE with client photography: rooftop solar commercial */}
           <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=900&q=80&auto=format&fit=crop"
-               srcset="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=600&q=78&auto=format&fit=crop 600w,
-                       https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=1000&q=80&auto=format&fit=crop 1000w"
+               srcSet="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=600&q=78&auto=format&fit=crop 600w, https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=1000&q=80&auto=format&fit=crop 1000w"
                sizes="(max-width:767px) 82vw, 31vw"
                alt="Solar panels installed on a commercial rooftop" loading="lazy" decoding="async" />
           <div className="proj-tag">Commercial</div>
@@ -609,10 +575,8 @@ export default function Home() {
 
       <article className="proj-card" data-reveal>
         <div className="proj-img">
-          {/* REPLACE with client photography: telecom / field engineering */}
           <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&q=80&auto=format&fit=crop"
-               srcset="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=78&auto=format&fit=crop 600w,
-                       https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1000&q=80&auto=format&fit=crop 1000w"
+               srcSet="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=78&auto=format&fit=crop 600w, https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1000&q=80&auto=format&fit=crop 1000w"
                sizes="(max-width:767px) 82vw, 31vw"
                alt="Connected network infrastructure visual" loading="lazy" decoding="async" />
           <div className="proj-tag">Public Sector</div>
@@ -772,42 +736,40 @@ export default function Home() {
         a proposed site visit date.
       </p>
 
-      
-        <form className="consult-form" onSubmit={handleSubmit}>
-          {status.success && <div className="p-3 mb-4 bg-green-900/30 border border-green-500/50 text-green-400 rounded">Consultation requested successfully. We will contact you soon.</div>}
-          {status.error && <div className="p-3 mb-4 bg-red-900/30 border border-red-500/50 text-red-400 rounded">{status.error}</div>}
-          <div className="form-group">
-            <label htmlFor="name">Full Name *</label>
-            <input type="text" id="name" name="name" required placeholder="Engr. John Doe" value={formState.name} onChange={handleChange} />
+      <form className="consult-form" onSubmit={handleSubmit}>
+        {status.success && <div style={{padding: '12px', background: 'rgba(16,185,129,0.15)', border: '1px solid #10b981', color: '#10b981', marginBottom: '16px'}}>Consultation requested successfully. We will contact you soon.</div>}
+        {status.error && <div style={{padding: '12px', background: 'rgba(239,68,68,0.15)', border: '1px solid #ef4444', color: '#ef4444', marginBottom: '16px'}}>{status.error}</div>}
+        <div className="form-group">
+          <label htmlFor="name">Full Name *</label>
+          <input type="text" id="name" name="name" required placeholder="Engr. John Doe" value={formState.name} onChange={handleChange} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Work Email *</label>
+          <input type="email" id="email" name="email" required placeholder="john@company.com.ng" value={formState.email} onChange={handleChange} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="company">Company / Institution</label>
+          <input type="text" id="company" name="company" placeholder="e.g. First Bank of Nigeria" value={formState.company} onChange={handleChange} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="service">Primary Interest *</label>
+          <div className="select-wrapper">
+            <select id="service" name="service" required value={formState.service} onChange={handleChange}>
+              <option value="ict">ICT Infrastructure</option>
+              <option value="electrical">Electrical Installations</option>
+              <option value="renewable">Renewable Energy</option>
+              <option value="consulting">Technical Consulting</option>
+            </select>
           </div>
-          <div className="form-group">
-            <label htmlFor="email">Work Email *</label>
-            <input type="email" id="email" name="email" required placeholder="john@company.com.ng" value={formState.email} onChange={handleChange} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="company">Company / Institution</label>
-            <input type="text" id="company" name="company" placeholder="e.g. First Bank of Nigeria" value={formState.company} onChange={handleChange} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="service">Primary Interest *</label>
-            <div className="select-wrapper">
-              <select id="service" name="service" required value={formState.service} onChange={handleChange}>
-                <option value="ict">ICT Infrastructure</option>
-                <option value="electrical">Electrical Installations</option>
-                <option value="renewable">Renewable Energy</option>
-                <option value="consulting">Technical Consulting</option>
-              </select>
-            </div>
-          </div>
-          <div className="form-group">
-            <label htmlFor="message">Project Details *</label>
-            <textarea id="message" name="message" rows="4" required placeholder="Briefly describe your requirements, timeline, or current challenges..." value={formState.message} onChange={handleChange}></textarea>
-          </div>
-          <button type="submit" className="btn btn-primary" style={{width: '100%'}} disabled={status.submitting}>
-            {status.submitting ? 'Submitting...' : 'Request Consultation'}
-          </button>
-        </form>
-      
+        </div>
+        <div className="form-group">
+          <label htmlFor="message">Project Details *</label>
+          <textarea id="message" name="message" rows="4" required placeholder="Briefly describe your requirements, timeline, or current challenges..." value={formState.message} onChange={handleChange}></textarea>
+        </div>
+        <button type="submit" className="btn btn-primary" style={{width: '100%'}} disabled={status.submitting}>
+          {status.submitting ? 'Submitting...' : 'Request Consultation'}
+        </button>
+      </form>
     </div>
   </div>
 </section>
@@ -917,7 +879,6 @@ export default function Home() {
 <button className="to-top" id="toTop" aria-label="Back to top">
   <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="square"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
-
 
     </>
   );
