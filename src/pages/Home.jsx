@@ -17,14 +17,30 @@ export default function Home() {
       lastScroll = currentScroll;
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
-
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const revealEls = document.querySelectorAll('[data-reveal]');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ submitting: true, success: false, error: null });
-
     try {
       const res = await fetch('/api/consultations', {
         method: 'POST',
@@ -44,7 +60,6 @@ export default function Home() {
 
   return (
     <>
-{/* ================= HEADER ================= */}
 <header className="site-header" id="siteHeader">
   <div className="header-inner">
     <a href="#top" className="logo" aria-label="TANDF Technology Limited — home">
@@ -85,7 +100,6 @@ export default function Home() {
   </div>
 </header>
 
-{/* Mobile menu */}
 <div className="mobile-menu" id="mobileMenu" aria-hidden="true">
   <a className="m-link" href="#top"><span className="n">01</span> Home</a>
   <a className="m-link" href="#about"><span className="n">02</span> About</a>
@@ -108,7 +122,6 @@ export default function Home() {
 
 <main id="top">
 
-{/* ================= HERO ================= */}
 <section className="hero noise" aria-label="Introduction">
   <div className="hero-media" id="heroMedia">
     <img
@@ -123,26 +136,26 @@ export default function Home() {
 
   <div className="container">
     <div className="hero-content">
-      <div className="hero-label mono" data-hero="1">
+      <div className="hero-label mono">
         <span className="dot" aria-hidden="true"></span>
         ICT &nbsp;·&nbsp; Electrical &nbsp;·&nbsp; Renewable Energy
       </div>
 
-      <h1 data-hero="2">
+      <h1>
         Reliable IT &amp; Electrical Solutions That <span className="accent">Power Your Business</span>
       </h1>
 
-      <p className="hero-sub" data-hero="3">
+      <p className="hero-sub">
         TANDF Technology designs, installs and maintains the infrastructure Nigerian organisations
         depend on — from structured cabling and switchgear to solar-hybrid power and managed IT support.
       </p>
 
-      <div className="hero-actions" data-hero="4">
+      <div className="hero-actions">
         <a href="#contact" className="btn btn-amber">Request a Consultation <span className="arw" aria-hidden="true">→</span></a>
         <a href="#services" className="btn btn-outline">Explore Our Services</a>
       </div>
 
-      <div className="hero-meta" data-hero="5">
+      <div className="hero-meta">
         <div className="item">
           <div className="num">12<span style={{color: "var(--amber)"}}>+</span></div>
           <div className="lbl">Years in the field</div>
@@ -165,7 +178,6 @@ export default function Home() {
   </a>
 </section>
 
-{/* ================= TRUST BAR ================= */}
 <section className="trust" aria-label="Clients and sectors">
   <div className="container trust-inner">
     <div className="trust-label mono">
@@ -186,7 +198,6 @@ export default function Home() {
   </div>
 </section>
 
-{/* ================= INTRO / ABOUT ================= */}
 <section className="section intro" id="about">
   <div className="container intro-grid">
     <div className="intro-copy">
@@ -246,7 +257,6 @@ export default function Home() {
   </div>
 </section>
 
-{/* ================= SERVICES ================= */}
 <section className="section services noise" id="services">
   <div className="container">
     <div className="services-top">
@@ -343,31 +353,29 @@ export default function Home() {
   </div>
 </section>
 
-{/* ================= STATS BAND ================= */}
 <section className="stats-band noise" aria-label="Company figures">
   <div className="container">
     <div className="stats-grid">
       <div className="stat" data-reveal>
-        <div className="v"><span data-count="240" data-suffix="+">0</span></div>
+        <div className="v">240<span className="suffix">+</span></div>
         <div className="k">Sites designed,<br />installed &amp; commissioned</div>
       </div>
       <div className="stat" data-reveal>
-        <div className="v"><span data-count="36" data-suffix="">0</span></div>
+        <div className="v">36<span className="suffix"></span></div>
         <div className="k">States covered through<br />our field partner network</div>
       </div>
       <div className="stat" data-reveal>
-        <div className="v"><span data-count="98" data-suffix="%">0</span></div>
+        <div className="v">98<span className="suffix">%</span></div>
         <div className="k">First-visit resolution<br />on SLA maintenance calls</div>
       </div>
       <div className="stat" data-reveal>
-        <div className="v"><span data-count="6" data-suffix=" MW">0</span></div>
+        <div className="v">6<span className="suffix"> MW</span></div>
         <div className="k">Solar &amp; hybrid capacity<br />deployed to date</div>
       </div>
     </div>
   </div>
 </section>
 
-{/* ================= WHY TANDF ================= */}
 <section className="section why" id="why">
   <div className="container why-grid">
     <div className="why-sticky">
@@ -438,7 +446,6 @@ export default function Home() {
   </div>
 </section>
 
-{/* ================= PROJECTS ================= */}
 <section className="section projects" id="projects">
   <div className="container">
     <div className="projects-head">
@@ -598,7 +605,6 @@ export default function Home() {
   </div>
 </section>
 
-{/* ================= PROCESS ================= */}
 <section className="section process noise" aria-label="How we work">
   <div className="container">
     <div className="section-head">
@@ -642,7 +648,6 @@ export default function Home() {
   </div>
 </section>
 
-{/* ================= CTA BAND ================= */}
 <section className="cta-band noise">
   <div className="glow" aria-hidden="true"></div>
   <div className="container cta-inner">
@@ -661,7 +666,6 @@ export default function Home() {
   </div>
 </section>
 
-{/* ================= CONTACT ================= */}
 <section className="section contact" id="contact">
   <div className="container contact-grid">
     <div className="contact-info">
@@ -736,39 +740,47 @@ export default function Home() {
         a proposed site visit date.
       </p>
 
-      <form className="consult-form" onSubmit={handleSubmit}>
-        {status.success && <div style={{padding: '12px', background: 'rgba(16,185,129,0.15)', border: '1px solid #10b981', color: '#10b981', marginBottom: '16px'}}>Consultation requested successfully. We will contact you soon.</div>}
-        {status.error && <div style={{padding: '12px', background: 'rgba(239,68,68,0.15)', border: '1px solid #ef4444', color: '#ef4444', marginBottom: '16px'}}>{status.error}</div>}
-        <div className="form-group">
-          <label htmlFor="name">Full Name *</label>
+      <form className="form-grid" onSubmit={handleSubmit}>
+        <div className="field full">
+          {status.success && <div style={{padding: '12px', background: 'rgba(14,124,123,.08)', border: '1px solid rgba(14,124,123,.4)', color: '#0E7C7B', marginBottom: '8px'}}>Consultation requested successfully. We'll be in touch shortly.</div>}
+          {status.error && <div style={{padding: '12px', background: 'rgba(194,65,47,.08)', border: '1px solid rgba(194,65,47,.4)', color: '#C2412F', marginBottom: '8px'}}>{status.error}</div>}
+        </div>
+
+        <div className="field">
+          <label htmlFor="name">Full Name <span className="req">*</span></label>
           <input type="text" id="name" name="name" required placeholder="Engr. John Doe" value={formState.name} onChange={handleChange} />
         </div>
-        <div className="form-group">
-          <label htmlFor="email">Work Email *</label>
+
+        <div className="field">
+          <label htmlFor="email">Work Email <span className="req">*</span></label>
           <input type="email" id="email" name="email" required placeholder="john@company.com.ng" value={formState.email} onChange={handleChange} />
         </div>
-        <div className="form-group">
+
+        <div className="field full">
           <label htmlFor="company">Company / Institution</label>
           <input type="text" id="company" name="company" placeholder="e.g. First Bank of Nigeria" value={formState.company} onChange={handleChange} />
         </div>
-        <div className="form-group">
-          <label htmlFor="service">Primary Interest *</label>
-          <div className="select-wrapper">
-            <select id="service" name="service" required value={formState.service} onChange={handleChange}>
-              <option value="ict">ICT Infrastructure</option>
-              <option value="electrical">Electrical Installations</option>
-              <option value="renewable">Renewable Energy</option>
-              <option value="consulting">Technical Consulting</option>
-            </select>
-          </div>
+
+        <div className="field full">
+          <label htmlFor="service">Primary Interest <span className="req">*</span></label>
+          <select id="service" name="service" required value={formState.service} onChange={handleChange}>
+            <option value="ict">ICT Infrastructure</option>
+            <option value="electrical">Electrical Installations</option>
+            <option value="renewable">Renewable Energy</option>
+            <option value="consulting">Technical Consulting</option>
+          </select>
         </div>
-        <div className="form-group">
-          <label htmlFor="message">Project Details *</label>
+
+        <div className="field full">
+          <label htmlFor="message">Project Details <span className="req">*</span></label>
           <textarea id="message" name="message" rows="4" required placeholder="Briefly describe your requirements, timeline, or current challenges..." value={formState.message} onChange={handleChange}></textarea>
         </div>
-        <button type="submit" className="btn btn-primary" style={{width: '100%'}} disabled={status.submitting}>
-          {status.submitting ? 'Submitting...' : 'Request Consultation'}
-        </button>
+
+        <div className="field full">
+          <button type="submit" className="btn btn-amber" style={{width: '100%'}} disabled={status.submitting}>
+            {status.submitting ? 'Submitting...' : 'Request Consultation'}
+          </button>
+        </div>
       </form>
     </div>
   </div>
@@ -776,7 +788,6 @@ export default function Home() {
 
 </main>
 
-{/* ================= FOOTER ================= */}
 <footer className="site-footer noise">
   <div className="container">
     <div className="footer-top">
@@ -876,7 +887,7 @@ export default function Home() {
   </div>
 </footer>
 
-<button className="to-top" id="toTop" aria-label="Back to top">
+<button className="to-top" id="toTop" aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
   <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="square"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
