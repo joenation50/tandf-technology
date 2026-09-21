@@ -4,8 +4,8 @@ export default function Home() {
   const [formState, setFormState] = useState({ name: '', email: '', company: '', service: 'ict', message: '' });
   const [status, setStatus] = useState({ submitting: false, success: false, error: null });
 
+  /*
   useEffect(() => {
-    // Add the smooth scrolling and header logic
     const header = document.getElementById('siteHeader');
     let lastScroll = 0;
     const handleScroll = () => {
@@ -21,6 +21,10 @@ export default function Home() {
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  */
+
+  const handleSubmit = async (e) => {
+    ...
 
   const handleSubmit = async (e) => {
     e.preventDefault();
