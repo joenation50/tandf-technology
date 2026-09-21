@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* Extract the custom styles into here */
+@import "./custom.css";
+
+/* Additional tailwind overrides if needed */
+body {
+  background-color: var(--charcoal);
+  color: var(--offwhite);
+}
